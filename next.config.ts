@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
       fullUrl: true,
     },
   },
+  productionBrowserSourceMaps: true,
+  cacheComponents: true,
 };
 
 export default nextConfig;

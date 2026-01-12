@@ -12,7 +12,7 @@
  * ---------------------------------------------------------------------------------
  */
 
-// Source: src\sanity\extract.json
+// Source: schema.json
 export type Page = {
   _id: string;
   _type: "page";
