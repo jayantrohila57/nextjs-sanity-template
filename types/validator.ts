@@ -5,11 +5,15 @@
 import type { AppRoutes, LayoutRoutes, ParamMap } from "./routes.js";
 import type { ResolvingMetadata, ResolvingViewport } from "next/types.js";
 
+type RouteParams<Route extends AppRoutes | LayoutRoutes> = {
+  params: Promise<ParamMap[Route]>;
+} & Record<string, unknown>;
+
 type AppPageConfig<Route extends AppRoutes = AppRoutes> = {
   default:
-    | React.ComponentType<{ params: Promise<ParamMap[Route]> } & any>
+    | React.ComponentType<RouteParams<Route>>
     | ((
-        props: { params: Promise<ParamMap[Route]> } & any
+        props: RouteParams<Route>
       ) =>
         | React.ReactNode
         | Promise<React.ReactNode>
@@ -18,17 +22,17 @@ type AppPageConfig<Route extends AppRoutes = AppRoutes> = {
         | Promise<void>);
   generateStaticParams?: (props: {
     params: ParamMap[Route];
-  }) => Promise<any[]> | any[];
+  }) => Promise<ParamMap[Route][]> | ParamMap[Route][];
   generateMetadata?: (
-    props: { params: Promise<ParamMap[Route]> } & any,
+    props: RouteParams<Route>,
     parent: ResolvingMetadata
-  ) => Promise<any> | any;
+  ) => Promise<unknown> | unknown;
   generateViewport?: (
-    props: { params: Promise<ParamMap[Route]> } & any,
+    props: RouteParams<Route>,
     parent: ResolvingViewport
-  ) => Promise<any> | any;
-  metadata?: any;
-  viewport?: any;
+  ) => Promise<unknown> | unknown;
+  metadata?: unknown;
+  viewport?: unknown;
 };
 
 type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
@@ -44,17 +48,17 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
         | Promise<void>);
   generateStaticParams?: (props: {
     params: ParamMap[Route];
-  }) => Promise<any[]> | any[];
+  }) => Promise<ParamMap[Route][]> | ParamMap[Route][];
   generateMetadata?: (
-    props: { params: Promise<ParamMap[Route]> } & any,
+    props: RouteParams<Route>,
     parent: ResolvingMetadata
-  ) => Promise<any> | any;
+  ) => Promise<unknown> | unknown;
   generateViewport?: (
-    props: { params: Promise<ParamMap[Route]> } & any,
+    props: RouteParams<Route>,
     parent: ResolvingViewport
-  ) => Promise<any> | any;
-  metadata?: any;
-  viewport?: any;
+  ) => Promise<unknown> | unknown;
+  metadata?: unknown;
+  viewport?: unknown;
 };
 
 // Validate ../../src/app/page.tsx

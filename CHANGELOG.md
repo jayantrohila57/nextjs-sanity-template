@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.4.0
+
+- Complete Phase 4 - Content Model Architecture
+  - Implement comprehensive content schemas for generic platform
+  - Add site settings schema for global configuration
+  - Add navigation schema with hierarchical menu support
+  - Add page schema with flexible content blocks
+  - Add blog schema with author and category relationships
+  - Add author schema with bio and social links
+  - Add category schema with hierarchical organization
+  - Add legal page schema for compliance content
+  - Add redirects schema for URL management
+  - Add SEO schema for metadata management
+  - Implement comprehensive validation rules across all schemas
+  - Add slug handling with automatic generation and uniqueness
+  - Add reference logic for content relationships
+  - Add field-level validation and custom validation functions
+  - Implement proper TypeScript types for all content models
+- Content model architecture is now complete and ready for page builder implementation
+
 ## v0.3.0
 
 - Complete Phase 3 - Sanity Core Integration

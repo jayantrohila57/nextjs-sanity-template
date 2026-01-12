@@ -1,11 +1,22 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { defineQuery } from "next-sanity";
 import { draftClient } from "@/sanity/draft-client";
+import { q } from "@/sanity/groqd-client";
 
-const query = defineQuery(
-  `*[_type == "page" && slug.current == $slug][0]{title, body}`,
-);
+const pageQuery = q.star
+  .filterByType("page")
+  .filterRaw("slug.current == $slug")
+  .order("publishDate asc", "_updatedAt desc")
+  .slice(0)
+  .project((q) => ({
+    _id: q.field("_id"),
+    _type: q.field("_type"),
+    title: q.field("title"),
+    slug: q.field("slug"),
+    body: q.field("body[]"),
+  }));
+
+export const { query } = pageQuery;
 
 export default async function Page({
   params,

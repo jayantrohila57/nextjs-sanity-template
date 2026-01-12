@@ -2,13 +2,13 @@
 
 A production-ready Next.js + TypeScript scaffold with complete Sanity CMS integration, visual editing, and draft mode capabilities.
 
-**This is v0.3.0 - Sanity Core Integration Complete**
+**This is v0.4.0 - Content Model Architecture Complete**
 
-Full Sanity CMS integration with visual editing, draft mode, and typed queries. Ready for content management and page building.
+Full content model architecture with comprehensive schemas, validation, and relationships. Ready for page builder implementation.
 
 ---
 
-## Current State (v0.3.0)
+## Current State (v0.4.0)
 
 ✅ **Implemented:**
 
@@ -18,18 +18,28 @@ Full Sanity CMS integration with visual editing, draft mode, and typed queries. 
 - **Visual editing with Presentation Tool**
 - **Draft mode with live updates**
 - **Typed GROQ queries with auto-generation**
-- **Schema system (page, post, author, category)**
-- **Token-based authentication**
-- **Draft mode API endpoints**
+- **Complete Content Model Architecture**
+- **Site settings schema for global configuration**
+- **Navigation schema with hierarchical menus**
+- **Page schema with flexible content blocks**
+- **Blog schema with author and category relationships**
+- **Author schema with bio and social links**
+- **Category schema with hierarchical organization**
+- **Legal page schema for compliance content**
+- **Redirects schema for URL management**
+- **SEO schema for metadata management**
+- **Comprehensive validation rules across all schemas**
+- **Slug handling with automatic generation**
+- **Reference logic for content relationships**
 - **Error boundaries and loading states**
 - **Offline page support**
 - **Production-ready build system**
 
 🚧 **In Development:**
 
-- Content Model Architecture (Phase 4)
+- Page Builder System (Phase 5)
 - Advanced page builder blocks
-- SEO management system
+- Dynamic routing engine
 
 📋 **Planned (Roadmap):**
 

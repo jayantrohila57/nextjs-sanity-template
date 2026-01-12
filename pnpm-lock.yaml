@@ -32,6 +32,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      groqd:
+        specifier: ^1.7.1
+        version: 1.7.1
       lucide-react:
         specifier: ^0.562.0
         version: 0.562.0(react@19.2.3)
@@ -3317,6 +3320,10 @@ packages:
     resolution: {integrity: sha512-98P1gLlIHbdB0wP2dPsKsn6c31iaUoPi+ES+iwNpe7L8sQp7zYWm/yZDdX/KEdCloCPthTlWIYEXVKHqiTc0eA==}
     engines: {node: '>=20.19 <22 || >=22.12'}
 
+  groqd@1.7.1:
+    resolution: {integrity: sha512-gcm9ccjEEDwD1pn+NS3NzZb4Bc4QrV+PhmvuP63cT1ixIFWnWiFgeauByqkCHmjuZ7QtD/gNWIYFM8tQhPPqiQ==}
+    engines: {node: '>= 14'}
+
   gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
     hasBin: true
@@ -4879,6 +4886,10 @@ packages:
   type-fest@0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+
+  type-fest@4.41.0:
+    resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
+    engines: {node: '>=16'}
 
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
@@ -8827,6 +8838,11 @@ snapshots:
 
   groq@4.22.0: {}
 
+  groqd@1.7.1:
+    dependencies:
+      type-fest: 4.41.0
+      zod: 3.25.76
+
   gunzip-maybe@1.4.2:
     dependencies:
       browserify-zlib: 0.1.4
@@ -10568,6 +10584,8 @@ snapshots:
   type-fest@0.6.0: {}
 
   type-fest@0.8.1: {}
+
+  type-fest@4.41.0: {}
 
   typedarray-to-buffer@3.1.5:
     dependencies:

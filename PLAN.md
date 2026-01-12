@@ -1,6 +1,6 @@
 # Project Delivery Plan
 
-## Current Status: v0.3.0
+## Current Status: v0.4.0
 
 **Completed Phases:**
 
@@ -8,8 +8,9 @@
 - ✅ Phase 1: Repository setup (versioning, changelog, basic quality gates)
 - ✅ Phase 2: Next.js foundation (complete)
 - ✅ Phase 3: Sanity Core Integration (complete)
+- ✅ Phase 4: Content Model Architecture (complete)
 
-**Next Priority:** Begin Phase 4 - Content Model Architecture
+**Next Priority:** Begin Phase 5 - Page Builder System
 
 ---
 
@@ -127,25 +128,28 @@
 
 ### Tasks
 
-- Create schemas for:
-  - Site settings
-  - Navigation
-  - Page
-  - Blog
-  - Author
-  - Category
-  - Legal
-  - Redirects
-  - SEO
-- Add:
-  - Validation rules
-  - Slug handling
-  - Reference logic
+- ✅ Create schemas for:
+  - ✅ Site settings
+  - ✅ Navigation
+  - ✅ Page
+  - ✅ Blog
+  - ✅ Author
+  - ✅ Category
+  - ✅ Legal
+  - ✅ Redirects
+  - ✅ SEO
+- ✅ Add:
+  - ✅ Validation rules
+  - ✅ Slug handling
+  - ✅ Reference logic
+  - ✅ Field-level validation
+  - ✅ Custom validation functions
+  - ✅ TypeScript types for all models
 
 ### Output
 
-- CMS can describe a full website
-- v0.4.0 tag
+- ✅ CMS can describe a full website
+- ✅ v0.4.0 tag
 
 ---
 
