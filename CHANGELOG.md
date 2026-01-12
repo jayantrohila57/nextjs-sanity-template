@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.4
+
+- Complete Phase 2 - add offline page support
+  - Add offline fallback page with static rendering
+  - Add offline metadata for proper SEO
+  - Update PLAN.md to mark Phase 2 complete
+  - Update version to v0.1.4
+
+Phase 2 foundation is now complete with full PWA offline support ready.
+
 ## v0.1.3
 
 - Complete Phase 2 - Next.js foundation
