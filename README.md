@@ -1,142 +1,93 @@
 # Next.js + Sanity CMS Website Template
 
-A production-ready, CMS-driven website platform built with the Next.js App Router, TypeScript, and Sanity.
+A Next.js + TypeScript scaffold with Sanity CMS integration foundation.
 
-All content — including navigation, SEO, legal pages, and page structure — is managed in Sanity, allowing you to ship sites that require zero code changes after setup. This template is perfect for portfolios, marketing sites, blogs, SaaS landing pages, and corporate sites.
+**This is v0.1.1 - Early Development Stage**
+
+Currently in scaffold phase with basic Next.js setup and documentation framework. The full CMS-driven features described in the roadmap are planned for future releases.
 
 ---
 
-## What This Template Guarantees
+## Current State (v0.1.1)
 
-Every project generated from this template ships with:
+✅ **Implemented:**
 
 - Next.js App Router + TypeScript
-- Sanity CMS as the single source of truth
-- Block-based page builder
+- Tailwind CSS + Biome linting/formatting
+- Basic project structure
+- Documentation framework
+- MIT license
+
+🚧 **In Development:**
+
+- Sanity CMS integration
+- Content schemas
+- Page builder system
+
+📋 **Planned (Roadmap):**
+
 - CMS-driven SEO & metadata
-- CMS-driven navigation
-- Blog & content system
-- Legal & compliance pages
-- PWA + offline support
-- Fully static or ISR-based rendering
-- Draft & preview mode
-- Production-ready deployment
-
-> No demo content. No hardcoded pages. Everything is CMS-driven.
+- Dynamic routing from CMS
+- PWA support
+- Legal compliance pages
+- Production deployment
 
 ---
 
-## Page Builder
+## Planned Features (Future Releases)
 
-Pages are composed from Sanity-managed blocks, including:
+This template is designed to become a production-ready, CMS-driven website platform. The complete feature set includes:
 
-- Hero
-- Rich text
-- Features
-- Testimonials
-- CTA
-- Gallery
-- FAQ
+### Page Builder System
 
-Each block provides:
+Pages will be composed from Sanity-managed blocks:
 
-- A Sanity schema
-- A typed GROQ query
-- A React renderer
+- Hero, Rich text, Features, Testimonials, CTA, Gallery, FAQ
 
-You build pages visually inside Sanity, ensuring content and layout stay in sync.
+### SEO System
 
----
+CMS-managed SEO with meta titles, descriptions, OG images, structured data
 
-## SEO System
+### Dynamic Routing
 
-SEO is completely managed in Sanity. Each page supports:
-
-- Meta title
-- Meta description
-- Open Graph image
-- Canonical URL
-- No-index flag
-- Structured data
-
-`generateMetadata()` in Next.js renders SEO at build time for consistent, performant metadata.
-
----
-
-## Routing
-
-Routes are generated dynamically from Sanity:
+Routes generated from Sanity:
 
 - `/` → Home page
 - `/[slug]` → CMS-driven pages
 - `/blog/[slug]`
-- Legal routes (privacy, terms, cookies)
+- Legal routes
 
-All routes support:
+### PWA Support
 
-- Static generation
-- Revalidation
-- Draft preview
+Web app manifest, service worker, offline fallback
 
 ---
 
-## PWA Support
+## Development Philosophy
 
-Every generated site includes:
+This is a **template source**, not a finished application:
 
-- Web app manifest
-- Icons
-- Service worker
-- Offline fallback
-
-This makes the site installable and resilient by default.
+- Content will live in Sanity
+- Code stays stable and reusable
+- Every new site created from this template
 
 ---
 
-## Developer Experience
+## Current Use Cases
 
-The template enforces strong DX defaults:
+**Ready for:**
 
-- TypeScript strict mode
-- Typed CMS queries
-- Linting & formatting
-- Git hooks
-- Build checks
+- Template development
+- Learning the architecture
+- Contributing to core features
 
-Bad code stays out of the template, ensuring consistency across launches.
+**Not yet ready for:**
 
----
+- Production websites
+- Client projects
+- Content management
 
-## Ideal Use Cases
-
-This template is designed for:
-
-- Personal portfolios
-- Blogs
-- Marketing websites
-- SaaS landing pages
-- Agency sites
-- Corporate websites
-
-It is **not** meant for:
-
-- Dashboards
-- Auth systems
-- SaaS backends
-- E-commerce logic
-
----
-
-## Philosophy
-
-This is not just a starter app — it's a website factory.
-
-- Content lives in Sanity.
-- Code stays stable.
-- Every new site is created from this template.
-
-
-
+See [PLAN.md](./PLAN.md) for the complete development roadmap.
 
 ---
 
@@ -144,14 +95,6 @@ This is not just a starter app — it's a website factory.
 
 This template is maintained by **Jayant Rohila**.
 
-Jayant is a full-stack engineer focused on building **CMS-driven, scalable web platforms** using:
-
-- Next.js
-- TypeScript
-- Sanity CMS
-- PWA & performance-first architectures
-
-This template reflects a real-world agency and SaaS delivery workflow:  
-one stable platform used to ship many production websites.
+Full-stack engineer focused on building **CMS-driven, scalable web platforms** using Next.js, TypeScript, and Sanity CMS.
 
 GitHub: https://github.com/jayantrohila57
