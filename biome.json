@@ -19,12 +19,14 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-
+      "a11y": {
+        "useSemanticElements": "error",
+        "useAriaPropsSupportedByRole": "error"
+      },
       "correctness": {
         "noUnusedImports": "error",
         "noUnusedVariables": "error"
       },
-
       "style": {
         "useImportType": "error"
       },

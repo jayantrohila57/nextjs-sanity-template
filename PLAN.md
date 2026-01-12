@@ -1,14 +1,14 @@
 # Project Delivery Plan
 
-## Current Status: v0.1.1
+## Current Status: v0.1.2
 
 **Completed Phases:**
 
 - ✅ Phase 0: Contract definition (README, ENV.md, ARCHITECTURE.md)
 - ✅ Phase 1: Repository setup (versioning, changelog, basic quality gates)
-- 🚧 Phase 2: Next.js foundation (partial - core setup done, some features pending)
+- ✅ Phase 2: Next.js foundation (complete)
 
-**Next Priority:** Complete Phase 2 foundation work before moving to Sanity integration.
+**Next Priority:** Begin Phase 3 - Sanity Core Integration.
 
 ---
 
@@ -74,13 +74,13 @@
 
 - Initialize Next.js App Router + TypeScript ✅
 - Set up project folder structure ✅
-- Set up alias paths (pending)
+- Set up alias paths ✅
 - Set up Tailwind ✅
-- Set up fonts (pending)
+- Set up fonts ✅
 - Set up layout system ✅
-- Set up error boundaries (pending)
-- Set up loading states (pending)
-- Set up 404 / not-found (pending)
+- Set up error boundaries ✅
+- Set up loading states ✅
+- Set up 404 / not-found ✅
 - Set up /offline page (pending)
 
 ### Output
