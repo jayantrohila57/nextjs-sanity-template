@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DraftModeProvider from "@/components/sanity/draft-mode-provider";
 import { font, fontMono } from "@/lib/font";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function SiteLayout({
     <html lang="en">
       <body className={`${font.variable} ${fontMono.variable} antialiased`}>
         {children}
+        <DraftModeProvider />
       </body>
     </html>
   );

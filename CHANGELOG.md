@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.3.0
+
+- Complete Phase 3 - Sanity Core Integration
+  - Set up complete Sanity Studio with Presentation Tool
+  - Implement comprehensive schema system (page, post, author, category, blockContent)
+  - Add typed GROQ queries with automatic TypeScript generation
+  - Implement draft mode with visual editing capabilities
+  - Add live content updates with SanityLive component
+  - Set up token-based authentication system
+  - Configure preview URLs and CORS settings
+  - Add draft mode API endpoints
+  - Implement visual editing overlay components
+  - Add disable draft mode functionality
+  - Generate complete TypeScript types for all schemas
+  - Set up production-ready client configurations
+- Sanity CMS is now fully integrated with visual editing and draft mode capabilities
+
 ## v0.1.4
 
 - Complete Phase 2 - add offline page support

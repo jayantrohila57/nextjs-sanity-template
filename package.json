@@ -1,6 +1,6 @@
 {
   "name": "nextjs-sanity-template",
-  "version": "0.1.4",
+  "version": "0.3.0",
   "private": true,
   "description": "A production-ready Next.js + Sanity CMS website factory with CMS-driven pages, SEO, PWA, and legal compliance.",
   "author": {
@@ -31,21 +31,33 @@
     "website-factory"
   ],
   "scripts": {
+    "predev": "pnpm run sanity:typegen",
     "dev": "next dev",
+    "prebuild": "pnpm run sanity:typegen",
     "build": "next build",
     "start": "next start",
     "lint": "biome format --write && biome check",
     "format": "biome format --write",
-    "format:fix": "biome format --check"
+    "format:fix": "biome format --check",
+    "sanity:extract": "pnpx sanity@latest schema extract",
+    "sanity:typegen": "pnpx sanity@latest schema extract --path=src/sanity/extract.json && pnpx sanity@latest typegen generate",
+    "typegen": "sanity schema extract --path=src/sanity/extract.json && sanity typegen generate"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
+    "@sanity/client": "^7.14.0",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.22.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
+    "next-sanity": "^11.6.12",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.3.5",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

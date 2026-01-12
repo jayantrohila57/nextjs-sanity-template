@@ -1,36 +1,42 @@
 # Next.js + Sanity CMS Website Template
 
-A Next.js + TypeScript scaffold with Sanity CMS integration foundation.
+A production-ready Next.js + TypeScript scaffold with complete Sanity CMS integration, visual editing, and draft mode capabilities.
 
-**This is v0.1.1 - Early Development Stage**
+**This is v0.3.0 - Sanity Core Integration Complete**
 
-Currently in scaffold phase with basic Next.js setup and documentation framework. The full CMS-driven features described in the roadmap are planned for future releases.
+Full Sanity CMS integration with visual editing, draft mode, and typed queries. Ready for content management and page building.
 
 ---
 
-## Current State (v0.1.1)
+## Current State (v0.3.0)
 
 ✅ **Implemented:**
 
 - Next.js App Router + TypeScript
 - Tailwind CSS + Biome linting/formatting
-- Basic project structure
-- Documentation framework
-- MIT license
+- **Complete Sanity CMS integration**
+- **Visual editing with Presentation Tool**
+- **Draft mode with live updates**
+- **Typed GROQ queries with auto-generation**
+- **Schema system (page, post, author, category)**
+- **Token-based authentication**
+- **Draft mode API endpoints**
+- **Error boundaries and loading states**
+- **Offline page support**
+- **Production-ready build system**
 
 🚧 **In Development:**
 
-- Sanity CMS integration
-- Content schemas
-- Page builder system
+- Content Model Architecture (Phase 4)
+- Advanced page builder blocks
+- SEO management system
 
 📋 **Planned (Roadmap):**
 
-- CMS-driven SEO & metadata
-- Dynamic routing from CMS
+- CMS-driven routing
 - PWA support
 - Legal compliance pages
-- Production deployment
+- Advanced SEO features
 
 ---
 
