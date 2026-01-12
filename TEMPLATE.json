@@ -1,0 +1,8 @@
+{
+  "template": true,
+  "name": "Next.js + Sanity Website Factory",
+  "version": "0.1.0",
+  "author": "Jayant Rohila",
+  "stack": ["Next.js", "TypeScript", "Sanity", "Tailwind", "PWA"],
+  "purpose": "CMS-driven websites with zero-code content management"
+}

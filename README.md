@@ -134,3 +134,24 @@ This is not just a starter app — it's a website factory.
 - Content lives in Sanity.
 - Code stays stable.
 - Every new site is created from this template.
+
+
+
+
+---
+
+## About the Author
+
+This template is maintained by **Jayant Rohila**.
+
+Jayant is a full-stack engineer focused on building **CMS-driven, scalable web platforms** using:
+
+- Next.js
+- TypeScript
+- Sanity CMS
+- PWA & performance-first architectures
+
+This template reflects a real-world agency and SaaS delivery workflow:  
+one stable platform used to ship many production websites.
+
+GitHub: https://github.com/jayantrohila57
