@@ -1,6 +1,4 @@
-import "@/styles/globals.css";
-
-export default function RootLayout({
+export default function OfflineLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

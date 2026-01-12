@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { font } from "@/lib/font";
-import "./globals.css";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

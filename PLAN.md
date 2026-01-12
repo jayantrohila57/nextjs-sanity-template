@@ -8,7 +8,7 @@
 - ✅ Phase 1: Repository setup (versioning, changelog, basic quality gates)
 - ✅ Phase 2: Next.js foundation (complete)
 
-**Next Priority:** Begin Phase 3 - Sanity Core Integration.
+**Next Priority:** Begin Phase 3 - Sanity Core Integration
 
 ---
 
@@ -30,9 +30,9 @@
 
 ### Output
 
-- README finalized ✅
-- ENV.md ✅
-- ARCHITECTURE.md ✅
+- README finalized
+- ENV.md
+- ARCHITECTURE.md
 
 ---
 
@@ -44,18 +44,18 @@
 
 ### Tasks
 
-- Create empty GitHub repo ✅
-- Enable Template Repository ✅
+- Create empty GitHub repo
+- Enable Template Repository
 - Add branch protection (pending)
 - Configure:
-  - Lint ✅
-  - Typecheck ✅
-  - Build ✅
+  - Lint
+  - Typecheck
+  - Build
 - Add Husky (pending)
 - Add commit lint (pending)
-- Define versioning rules ✅
-- Define release process ✅
-- Add CHANGELOG ✅
+- Define versioning rules
+- Define release process
+- Add CHANGELOG
 
 ### Output
 
@@ -72,16 +72,16 @@
 
 ### Tasks
 
-- Initialize Next.js App Router + TypeScript ✅
-- Set up project folder structure ✅
-- Set up alias paths ✅
-- Set up Tailwind ✅
-- Set up fonts ✅
-- Set up layout system ✅
-- Set up error boundaries ✅
-- Set up loading states ✅
-- Set up 404 / not-found ✅
-- Set up /offline page (pending)
+- Initialize Next.js App Router + TypeScript
+- Set up project folder structure
+- Set up alias paths
+- Set up Tailwind
+- Set up fonts
+- Set up layout system
+- Set up error boundaries
+- Set up loading states
+- Set up 404 / not-found
+- Set up /offline page
 
 ### Output
 

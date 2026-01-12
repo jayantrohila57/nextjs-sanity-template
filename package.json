@@ -1,6 +1,6 @@
 {
   "name": "nextjs-sanity-template",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "description": "A production-ready Next.js + Sanity CMS website factory with CMS-driven pages, SEO, PWA, and legal compliance.",
   "author": {
