@@ -2,13 +2,13 @@
 
 A production-ready Next.js + TypeScript scaffold with complete Sanity CMS integration, visual editing, and draft mode capabilities.
 
-**This is v0.4.0 - Content Model Architecture Complete**
+**This is v0.4.1 - Development Workflow Optimized**
 
-Full content model architecture with comprehensive schemas, validation, and relationships. Ready for page builder implementation.
+Content model architecture complete with optimized development workflow, improved file structure, and comprehensive commit guidelines. Ready for page builder implementation.
 
 ---
 
-## Current State (v0.4.0)
+## Current State (v0.4.1)
 
 ✅ **Implemented:**
 
@@ -34,6 +34,10 @@ Full content model architecture with comprehensive schemas, validation, and rela
 - **Error boundaries and loading states**
 - **Offline page support**
 - **Production-ready build system**
+- **Optimized development workflow**
+- **Improved file structure (domain/infra organization)**
+- **Comprehensive commit rules and guidelines**
+- **Fixed linting issues and merge conflicts**
 
 🚧 **In Development:**
 

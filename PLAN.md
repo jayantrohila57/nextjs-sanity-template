@@ -1,6 +1,6 @@
 # Project Delivery Plan
 
-## Current Status: v0.4.0
+## Current Status: v0.4.1
 
 **Completed Phases:**
 

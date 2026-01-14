@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.4.1
+
+- Refactor file structure from camelCase to kebab-case
+  - Rename all schema types to domain-specific folders
+  - Rename utilities to infra/sanity/utils/
+  - Rename clients to infra/sanity/clients/
+  - Rename components to infra/sanity/components/
+  - Update tsconfig.json paths to reflect new structure
+- Optimize development workflow
+  - Remove redundant predev/prebuild hooks
+  - Simplify lint-staged configuration
+  - Optimize pre-commit hook process
+  - Fix merge conflicts from multiple typegen executions
+- Add comprehensive COMMIT_RULES.md documentation
+- Add sanity.types.ts to biome ignore list
+- Fix linting errors in generated types
+
 ## v0.4.0
 
 - Complete Phase 4 - Content Model Architecture
