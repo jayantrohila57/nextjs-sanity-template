@@ -1,8 +1,32 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Format staged files only
-pnpm lint-staged
-
-# Final lint check on all files
-pnpm run lint:check
+# Check if there are staged files
+if git diff --cached --quiet; then
+  echo "🔄 Staged files detected, running workflow..."
+  
+  # 1. Generate types first (may update sanity.types.ts)
+  echo "📝 Generating Sanity types..."
+  pnpm run typegen
+  
+  # 2. Add generated types to staging if they were updated
+  if git diff --quiet sanity.types.ts; then
+    git add sanity.types.ts
+    echo "✅ Added updated types to staging"
+  fi
+  
+  # 3. Format all files (including newly generated types)
+  echo "🎨 Formatting files..."
+  pnpm run format
+  
+  # 4. Add formatted files to staging
+  git add .
+  
+  # 5. Final lint check
+  echo "🔍 Running lint check..."
+  pnpm run lint:check
+  
+  echo "✅ Pre-commit workflow complete"
+else
+  echo "ℹ️  No staged files, skipping pre-commit workflow"
+fi

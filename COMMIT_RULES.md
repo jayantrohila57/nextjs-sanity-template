@@ -94,6 +94,115 @@ style: apply biome formatting rules
 chore: bump version to 0.4.0
 ```
 
+## Complete Development Workflow
+
+### Automated Scripts
+
+The repository now has optimized scripts that handle the complete workflow:
+
+#### Development Commands
+
+```bash
+# Start development with type generation
+pnpm run dev
+# Runs: typegen → next dev
+
+# Production build with full validation
+pnpm run build
+# Runs: typegen → format → lint:check → next build
+```
+
+#### Pre-commit Hook (Automatic)
+
+The pre-commit hook automatically handles staged files:
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Check if there are staged files
+if git diff --cached --quiet; then
+  echo "🔄 Staged files detected, running workflow..."
+
+  # 1. Generate types first (may update sanity.types.ts)
+  echo "📝 Generating Sanity types..."
+  pnpm run typegen
+
+  # 2. Add generated types to staging if they were updated
+  if git diff --quiet sanity.types.ts; then
+    git add sanity.types.ts
+    echo "✅ Added updated types to staging"
+  fi
+
+  # 3. Format all files (including newly generated types)
+  echo "🎨 Formatting files..."
+  pnpm run format
+
+  # 4. Add formatted files to staging
+  git add .
+
+  # 5. Final lint check
+  echo "🔍 Running lint check..."
+  pnpm run lint:check
+
+  echo "✅ Pre-commit workflow complete"
+else
+  echo "ℹ️  No staged files, skipping pre-commit workflow"
+fi
+```
+
+### Manual Development Process
+
+#### For Regular Development
+
+```bash
+# 1. Make your changes
+# Edit files, add features, fix bugs
+
+# 2. Stage your changes
+git add <specific-files>
+# OR git add . for all changes
+
+# 3. Commit (automatic pre-commit runs)
+git commit -m "feat(sanity): add new component"
+
+# Pre-commit automatically runs:
+# - typegen → format → lint:check
+```
+
+#### For Releases (Phase Completion or Bug Fixes)
+
+```bash
+# 1. Complete your work
+# Finish phase or fix bugs
+
+# 2. Update documentation FIRST
+git add CHANGELOG.md PLAN.md README.md package.json
+
+# 3. Commit documentation updates
+git commit -m "docs: update CHANGELOG.md for v0.5.0"
+
+# 4. Bump version
+git commit -m "chore: bump version to 0.5.0"
+
+# 5. Phase completion/Bug fix commit
+git commit -m "feat(phase): Complete Phase 5 - Page Builder System (v0.5.0)"
+
+# 6. Create tag
+git tag v0.5.0
+
+# 7. Push everything
+git push origin main v0.5.0
+```
+
+### Key Workflow Features
+
+- ✅ **Type Generation**: Runs before dev/build, and in pre-commit
+- ✅ **Smart Staging**: Automatically adds generated types to staging
+- ✅ **Sequential Processing**: typegen → format → lint:check
+- ✅ **No Conflicts**: Handles generated files properly
+- ✅ **Git Add Awareness**: Checks what changes before staging
+
 ## Version Release Process
 
 ### 1. Phase Completion

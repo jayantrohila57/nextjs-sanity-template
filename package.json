@@ -31,9 +31,8 @@
     "website-factory"
   ],
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "pnpm run typegen",
-    "build": "next build",
+    "dev": "pnpm run typegen && next dev",
+    "build": "pnpm run typegen && pnpm run format && pnpm run lint:check && next build",
     "start": "next start",
     "lint": "biome format --write && biome check",
     "lint:check": "biome check",
