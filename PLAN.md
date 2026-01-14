@@ -10,7 +10,7 @@
 - Phase 3: Sanity Core Integration (complete)
 - Phase 4: Content Model Architecture (complete)
 
-**Next Priority:** Begin Phase 5 - Page Builder System
+**Next Priority:** Begin Phase 5 - SEO & Metadata Layer
 
 ---
 
@@ -153,7 +153,31 @@
 
 ---
 
-## Phase 5 — Page Builder System
+## Phase 5 — SEO & Metadata Layer
+
+### Goal
+
+- Deliver production-grade SEO.
+
+### Tasks
+
+- CMS SEO fields
+- Metadata mapping
+- OG image support
+- Canonical URLs
+- No-index logic
+- `robots.txt`
+- Sitemap
+- JSON-LD
+
+### Output
+
+- SEO is CMS driven
+- v0.5.0 tag
+
+---
+
+## Phase 6 — Page Builder System
 
 ### Goal
 
@@ -179,11 +203,11 @@
 ### Output
 
 - Pages are assembled from blocks
-- v0.5.0 tag
+- v0.6.0 tag
 
 ---
 
-## Phase 6 — Routing Engine
+## Phase 7 — Routing Engine
 
 ### Goal
 
@@ -203,30 +227,6 @@
 ### Output
 
 - Entire site driven by Sanity
-- v0.6.0 tag
-
----
-
-## Phase 7 — SEO & Metadata Layer
-
-### Goal
-
-- Deliver production-grade SEO.
-
-### Tasks
-
-- CMS SEO fields
-- Metadata mapping
-- OG image support
-- Canonical URLs
-- No-index logic
-- `robots.txt`
-- Sitemap
-- JSON-LD
-
-### Output
-
-- SEO is CMS driven
 - v0.7.0 tag
 
 ---
