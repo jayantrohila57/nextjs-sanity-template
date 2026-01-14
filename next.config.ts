@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     },
   },
   productionBrowserSourceMaps: true,
-  cacheComponents: true,
+  cacheComponents: false,
 };
 
 export default nextConfig;

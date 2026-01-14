@@ -428,6 +428,7 @@ export type Page = {
     | "services"
     | "custom";
   excerpt?: string;
+  body?: BlockContent;
   featuredImage?: {
     asset?: {
       _ref: string;
@@ -442,11 +443,10 @@ export type Page = {
     caption?: string;
     _type: "image";
   };
-  body?: BlockContent;
   seo?: Seo;
-  template?: "default" | "full-width" | "sidebar" | "landing";
   showInNavigation?: boolean;
   navigationTitle?: string;
+  template?: "default" | "full-width" | "sidebar" | "landing";
   isPublished?: boolean;
   publishDate?: string;
   lastModified?: string;

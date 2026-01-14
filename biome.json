@@ -38,7 +38,9 @@
       "style": {
         "useImportType": "error"
       },
-
+      "performance": {
+        "noImgElement": "error"
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
