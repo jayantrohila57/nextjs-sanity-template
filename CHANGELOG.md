@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.3
+
+- Documentation and infrastructure improvements
+  - Remove completion checkmarks from COMMIT_RULES.md for cleaner template
+  - Update GROQD.md with comprehensive query documentation
+  - Refactor site settings types and improve domain structure
+  - Add Sanity utilities for better action handling
+  - Add PWA manifest and icon files
+  - Add SEO metadata files (robots.txt, sitemap.xml)
+  - Add social media image generation
+- Update PLAN.md to v0.4.3 status
+
 ## v0.4.1
 
 - Refactor file structure from camelCase to kebab-case
