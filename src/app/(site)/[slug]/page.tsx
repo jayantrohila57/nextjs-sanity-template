@@ -1,7 +1,7 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { draftClient } from "@/sanity/draft-client";
-import { q } from "@/sanity/groqd-client";
+import { draftClient } from "@/infra/sanity/clients/draft-client";
+import { q } from "@/infra/sanity/clients/groqd-client";
 
 const pageQuery = q.star
   .filterByType("page")

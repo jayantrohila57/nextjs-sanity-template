@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DraftModeProvider from "@/components/sanity/draft-mode-provider";
+import DraftModeProvider from "@/infra/sanity/components/draft-mode-provider";
 import { font, fontMono } from "@/lib/font";
 
 export const metadata: Metadata = {

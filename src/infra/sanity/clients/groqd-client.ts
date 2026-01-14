@@ -1,9 +1,8 @@
 import { createGroqBuilder } from "groqd";
-
 import type {
   AllSanitySchemaTypes,
   internalGroqTypeReferenceTo,
-} from "../../sanity.types.js";
+} from "@/types";
 
 type SchemaConfig = {
   schemaTypes: AllSanitySchemaTypes;

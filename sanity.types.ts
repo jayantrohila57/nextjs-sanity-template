@@ -627,7 +627,13 @@ export type AllSanitySchemaTypes =
 
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
-// Source: src\sanity\lib\queries.ts
+type ArrayOf<T> = Array<
+  T & {
+    _key: string;
+  }
+>;
+
+// Source: src\domain\blog\queries.ts
 // Variable: POSTS_QUERY
 // Query: *[_type == "post" && defined(slug.current)][0...12]{  _id, title, slug}
 export type POSTS_QUERY_RESULT = Array<{
@@ -636,7 +642,7 @@ export type POSTS_QUERY_RESULT = Array<{
   slug: Slug | null;
 }>;
 
-// Source: src\sanity\lib\queries.ts
+// Source: src\domain\blog\queries.ts
 // Variable: POST_QUERY
 // Query: *[_type == "post" && slug.current == $slug][0]{  title, body, mainImage}
 export type POST_QUERY_RESULT = {

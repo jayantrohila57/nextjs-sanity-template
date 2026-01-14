@@ -24,8 +24,10 @@
       "@/lib/*": ["./src/lib/*"],
       "@/app/*": ["./src/app/*"],
       "@/types/*": ["./src/types/*"],
-      "@/data/*": ["./src/data/*"],
-      "@/public/*": ["./public/*"]
+      "@/infra/*": ["./src/infra/*"],
+      "@/domain/*": ["./src/domain/*"],
+      "@/public/*": ["./public/*"],
+      "@/types": ["./sanity.types.ts"]
     }
   },
   "include": [

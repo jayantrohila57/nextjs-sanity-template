@@ -1,6 +1,6 @@
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-import { SanityLive } from "@/sanity/lib/live";
+import { SanityLive } from "@/infra/sanity/utils/live";
 import { DisableDraftMode } from "./disable-draft-mode";
 
 export default async function DraftModeProvider() {

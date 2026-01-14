@@ -1,3 +1,12 @@
+import {
+  ArrowRightLeft,
+  Compass,
+  FileText,
+  Folder,
+  Settings,
+  Tags,
+  Users,
+} from "lucide-react";
 import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
@@ -8,14 +17,14 @@ export const structure: StructureResolver = (S) =>
       // Site Configuration
       S.listItem()
         .title("Site Configuration")
-        .icon(() => "⚙️")
+        .icon(Settings)
         .child(
           S.list()
             .title("Site Configuration")
             .items([
               S.listItem()
                 .title("Site Settings")
-                .icon(() => "⚙️")
+                .icon(Settings)
                 .child(
                   S.document()
                     .schemaType("siteSettings")
@@ -24,14 +33,16 @@ export const structure: StructureResolver = (S) =>
                 ),
               S.listItem()
                 .title("Navigation")
-                .icon(() => "🧭")
+                .icon(Compass)
                 .child(
                   S.document()
                     .schemaType("navigation")
                     .title("Navigation")
                     .id("navigation"),
                 ),
-              S.documentTypeListItem("redirect").title("URL Redirects"),
+              S.documentTypeListItem("redirect")
+                .title("URL Redirects")
+                .icon(ArrowRightLeft),
             ]),
         ),
 
@@ -40,14 +51,16 @@ export const structure: StructureResolver = (S) =>
       // Content
       S.listItem()
         .title("Content")
-        .icon(() => "📄")
+        .icon(Folder)
         .child(
           S.list()
             .title("Content")
             .items([
-              S.documentTypeListItem("page").title("Pages"),
-              S.documentTypeListItem("post").title("Blog Posts"),
-              S.documentTypeListItem("legal").title("Legal Pages"),
+              S.documentTypeListItem("page").title("Pages").icon(FileText),
+              S.documentTypeListItem("post").title("Blog Posts").icon(FileText),
+              S.documentTypeListItem("legal")
+                .title("Legal Pages")
+                .icon(FileText),
             ]),
         ),
 
@@ -56,13 +69,13 @@ export const structure: StructureResolver = (S) =>
       // Taxonomy
       S.listItem()
         .title("Taxonomy")
-        .icon(() => "🏷️")
+        .icon(Tags)
         .child(
           S.list()
             .title("Taxonomy")
             .items([
-              S.documentTypeListItem("category").title("Categories"),
-              S.documentTypeListItem("author").title("Authors"),
+              S.documentTypeListItem("category").title("Categories").icon(Tags),
+              S.documentTypeListItem("author").title("Authors").icon(Users),
             ]),
         ),
 
