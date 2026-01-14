@@ -1,32 +1,75 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "🚀 Starting AI Commit Rules Process..."
+
 # Check if there are staged files
-if git diff --cached --quiet; then
-  echo "🔄 Staged files detected, running workflow..."
-  
-  # 1. Generate types first (may update sanity.types.ts)
-  echo "📝 Generating Sanity types..."
-  pnpm run typegen
-  
-  # 2. Add generated types to staging if they were updated
-  if git diff --quiet sanity.types.ts; then
-    git add sanity.types.ts
-    echo "✅ Added updated types to staging"
+if ! git diff --cached --quiet; then
+  echo "🔄 Staged files detected, running commit rules workflow..."
+
+  # 1. Generate Sanity types
+  echo "📝 Step 1: Generating Sanity types..."
+  if ! pnpm run typegen; then
+    echo "❌ Sanity type generation failed"
+    exit 1
   fi
-  
-  # 3. Format all files (including newly generated types)
-  echo "🎨 Formatting files..."
-  pnpm run format
-  
-  # 4. Add formatted files to staging
+
+  # 2. Add generated types to staging if they were updated
+  if git diff --quiet sanity.types.ts 2>/dev/null || git diff --quiet src/sanity/types.ts 2>/dev/null; then
+    echo "✅ Sanity types updated, adding to staging..."
+    git add sanity.types.ts src/sanity/types.ts 2>/dev/null || true
+  fi
+
+  # 3. Validate markdown files
+  echo "📝 Step 2: Validating markdown files..."
+  if ! pnpm run validate:md; then
+    echo "❌ Markdown validation failed"
+    exit 1
+  fi
+
+  # 4. Check plan progress
+  echo "📊 Step 3: Checking plan progress..."
+  if ! pnpm run check:plan; then
+    echo "❌ Plan progress check failed"
+    exit 1
+  fi
+
+  # 5. Update documentation
+  echo "📋 Step 4: Updating documentation..."
+  if ! pnpm run update:docs; then
+    echo "❌ Documentation update failed"
+    exit 1
+  fi
+
+  # 6. Add updated documentation to staging
+  git add *.md 2>/dev/null || true
+  git add package.json 2>/dev/null || true
+
+  # 7. Format all files
+  echo "🎨 Step 5: Formatting files..."
+  if ! pnpm run format; then
+    echo "❌ Formatting failed"
+    exit 1
+  fi
+
+  # 8. Add formatted files to staging
   git add .
-  
-  # 5. Final lint check
-  echo "🔍 Running lint check..."
-  pnpm run lint:check
-  
-  echo "✅ Pre-commit workflow complete"
+
+  # 9. Run linting
+  echo "🔍 Step 6: Running lint check..."
+  if ! pnpm run lint:check; then
+    echo "❌ Linting failed"
+    exit 1
+  fi
+
+  # 10. Build validation
+  echo "🏗️ Step 7: Running build validation..."
+  if ! pnpm run build; then
+    echo "❌ Build failed"
+    exit 1
+  fi
+
+  echo "✅ All commit rules passed successfully!"
 else
-  echo "ℹ️  No staged files, skipping pre-commit workflow"
+  echo "ℹ️  No staged files, skipping commit rules workflow"
 fi

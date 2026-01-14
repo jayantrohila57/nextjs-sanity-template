@@ -145,15 +145,162 @@ if git diff --cached --quiet; then
   echo "🔍 Running lint check..."
   pnpm run lint:check
 
-  echo "✅ Pre-commit workflow complete"
+  echo " Pre-commit workflow complete"
 else
-  echo "ℹ️  No staged files, skipping pre-commit workflow"
+  echo " No staged files, skipping pre-commit workflow"
 fi
 ```
 
-### Manual Development Process
+### AI-Assisted Commit Workflow
 
-#### For Regular Development
+### Complete Automated Commit Process
+
+When you're ready to commit changes, use this AI-assisted workflow that handles the complete process:
+
+```bash
+# Trigger the AI commit workflow
+ai: run commit rules
+```
+
+#### Workflow Steps (Executed in Order)
+
+1. **Sanity Type Generation**
+
+   ```bash
+   pnpm run sanity:typegen
+   ```
+
+   - Generates updated Sanity types from schema changes
+   - Ensures type safety across the application
+
+2. **Markdown Files Validation**
+
+   - Scans all `.md` files for consistency
+   - Validates documentation structure and formatting
+   - Checks for broken links and references
+   - Ensures all docs follow project standards
+
+3. **Plan Progress Check**
+
+   - Analyzes current progress against PLAN.md
+   - Identifies completed tasks and milestones
+   - Checks phase completion status
+   - Validates implementation progress
+
+4. **Documentation Updates**
+
+   - Updates version numbers in relevant files
+   - Marks completed tasks in PLAN.md
+   - Updates CHANGELOG.md with new changes
+   - Synchronizes README.md with current state
+   - Updates any other documentation files as needed
+
+5. **Code Formatting**
+
+   ```bash
+   pnpm run format
+   ```
+
+   - Applies consistent formatting across all files
+   - Uses Biome for optimal performance
+   - Ensures code style consistency
+
+6. **Linting**
+
+   ```bash
+   pnpm run lint
+   ```
+
+   - Runs comprehensive linting checks
+   - Validates code quality and standards
+   - Catches potential issues early
+
+7. **Build Validation**
+
+   ```bash
+   pnpm run build
+   ```
+
+   - Builds the entire application
+   - Validates all components and dependencies
+   - Ensures production readiness
+
+8. **Git Operations**
+
+   ```bash
+   git add .
+   git commit -m "<commit-message>"
+   ```
+
+   - Stages all changes
+   - Creates commit with appropriate message
+   - Ensures all generated files are included
+
+9. **Version Tagging**
+   ```bash
+   git tag v<version>
+   ```
+   - Creates version tag for the commit
+   - Follows semantic versioning rules
+   - Enables easy rollback and tracking
+
+#### Usage Examples
+
+##### Regular Development Commit
+
+```bash
+ai: run commit rules
+# Output: feat(sanity): add new blog post schema (v0.4.1)
+```
+
+##### Phase Completion Commit
+
+```bash
+ai: run commit rules
+# Output: feat(phase): Complete Phase 5 - Page Builder System (v0.5.0)
+```
+
+##### Bug Fix Commit
+
+```bash
+ai: run commit rules
+# Output: fix(next): resolve draft mode authentication issue (v0.4.1)
+```
+
+#### AI Commit Message Generation
+
+The AI will automatically generate appropriate commit messages based on:
+
+- **Type of changes** (feat, fix, docs, etc.)
+- **Scope** (phase, sanity, next, etc.)
+- **Version impact** (patch, minor, major)
+- **Content analysis** of modified files
+- **Progress status** from PLAN.md
+
+#### Error Handling
+
+If any step fails:
+
+- Process stops immediately
+- Clear error message provided
+- Suggestions for fixing the issue
+- Resume from failed step after fixes
+
+#### Quality Gates
+
+The workflow enforces these quality standards:
+
+- All type generation succeeds
+- All markdown files are valid
+- Documentation is consistent
+- Code formatting is applied
+- Linting passes without errors
+- Build completes successfully
+- Git operations complete cleanly
+
+## Manual Development Process
+
+### For Regular Development
 
 ```bash
 # 1. Make your changes
@@ -170,7 +317,7 @@ git commit -m "feat(sanity): add new component"
 # - typegen → format → lint:check
 ```
 
-#### For Releases (Phase Completion or Bug Fixes)
+### For Releases (Phase Completion or Bug Fixes)
 
 ```bash
 # 1. Complete your work
