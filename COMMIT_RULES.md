@@ -237,12 +237,29 @@ ai: run commit rules
    - Ensures all generated files are included
 
 9. **Version Tagging**
+
    ```bash
    git tag v<version>
    ```
+
    - Creates version tag for the commit
    - Follows semantic versioning rules
    - Enables easy rollback and tracking
+
+10. **Tag Verification and Updates**
+
+- **Critical**: Ensure version tag points to the latest commit containing all version changes
+- If additional commits are made after version bump, update the tag:
+  ```bash
+  git tag -d v<version>        # Delete old tag
+  git tag v<version>            # Recreate tag on latest commit
+  ```
+- Verify tag points to correct commit:
+  ```bash
+  git show v<version> --oneline
+  ```
+- Tag must include ALL changes for that version (documentation, code, version bump)
+- Never push outdated tags to remote
 
 #### Usage Examples
 
@@ -418,6 +435,32 @@ Always update these files in order:
 2. **PLAN.md** - Update phase completion status if applicable
 3. **README.md** - Update current state and implemented features
 4. **package.json** - Version number (automated with bump commit)
+
+### Documentation Consistency Requirements
+
+**CRITICAL**: All documentation files must show consistent version information:
+
+- **package.json version** must match **PLAN.md current status**
+- **CHANGELOG.md** must have entry for the current version
+- **Version tag** must point to commit containing ALL documentation updates
+- **Version verification checklist**:
+
+  ```bash
+  # Check package.json version
+  grep '"version"' package.json
+
+  # Check PLAN.md status
+  grep "Current Status" PLAN.md
+
+  # Verify CHANGELOG has version entry
+  grep "## v[0-9]" CHANGELOG.md | head -1
+
+  # Verify tag points to latest commit
+  git show v<version> --oneline
+  ```
+
+- **If inconsistencies found**: Update documentation BEFORE creating final tag
+- **Never push**: Inconsistent version information across files
 
 ### CHANGELOG Format
 
