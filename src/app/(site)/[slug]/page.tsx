@@ -7,7 +7,7 @@ import { pageBySlugQuery } from "@/domain/site/page.query";
 import { client } from "@/infra/sanity/clients/client";
 import { draftClient } from "@/infra/sanity/clients/draft-client";
 import { urlFor } from "@/infra/sanity/utils/image";
-import type { SiteSettings } from "@/types";
+import type { Page, SiteSettings } from "@/types";
 
 // Enable ISR to handle dynamic metadata while allowing static generation
 export const revalidate = 3600; // Revalidate every hour
@@ -24,6 +24,7 @@ export async function generateMetadata({
   // Get site settings
   const { query: siteQuery } = siteSettingsQuery;
   let settings: SiteSettings | null = null;
+
   try {
     const [settingsData] = await client.fetch<SiteSettings[]>(siteQuery);
     settings = settingsData || null;
@@ -34,23 +35,8 @@ export async function generateMetadata({
 
   // Get page data
   const { query: pageQuery } = pageBySlugQuery;
-  let pageData: {
-    slug?: { current?: string };
-    title?: string;
-    excerpt?: string;
-    seo?: any;
-    featuredImage?: any;
-    body?: any[];
-    isPublished?: boolean;
-    publishDate?: string;
-    lastModified?: string;
-  } | null = null;
-  try {
-    pageData = await client.fetch(pageQuery, { slug });
-  } catch (error) {
-    console.warn("Failed to fetch page data:", error);
-    pageData = null;
-  }
+
+  const pageData = await client.fetch<Page>(pageQuery, { slug });
 
   if (!pageData) {
     return {
@@ -114,7 +100,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
+export default async function SitePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -144,12 +130,78 @@ export default async function Page({
     notFound();
   }
 
+  // Get site settings for JSON-LD
+  const { query: siteQuery } = siteSettingsQuery;
+  const [settings] = await client.fetch<SiteSettings[]>(siteQuery);
+  const defaultSiteUrl =
+    settings?.siteUrl ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "http://localhost:3000";
+
+  // Generate JSON-LD structured data for the page
+  const pageUrl = data.slug?.current
+    ? `${defaultSiteUrl}/${data.slug.current === "/" ? "" : data.slug.current}`
+    : defaultSiteUrl;
+
+  console.log("🔗 Structured data from SEO:", data.seo?.structuredData);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: data.title,
+    description: data.excerpt || data.seo?.description,
+    url: pageUrl,
+    ...(data.featuredImage && {
+      image: urlFor(data.featuredImage).url(),
+    }),
+    ...(data.publishDate && {
+      datePublished: data.publishDate,
+    }),
+    ...(data.lastModified && {
+      dateModified: data.lastModified,
+    }),
+    ...(data.seo?.structuredData &&
+      (() => {
+        const result: Record<string, unknown> = {};
+        for (const item of data.seo.structuredData) {
+          try {
+            console.log(
+              "📋 Processing structured data item:",
+              item.type,
+              item.data,
+            );
+            const parsedData = JSON.parse(item.data);
+            console.log("✅ Parsed structured data:", parsedData);
+            Object.assign(result, parsedData);
+          } catch (error) {
+            console.error(
+              "❌ Failed to parse structured data:",
+              error,
+              item.data,
+            );
+            // Skip invalid JSON
+          }
+        }
+        console.log("🎯 Final structured data result:", result);
+        return result;
+      })()),
+  };
+
+  console.log("🏗️ Final JSON-LD object:", JSON.stringify(jsonLd, null, 2));
+
   const featuredImageUrl = data.featuredImage
     ? urlFor(data.featuredImage).width(1200).height(630).url()
     : null;
 
   return (
     <article className="container mx-auto px-4 py-8 max-w-4xl">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data, content is safely escaped
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Featured Image */}
       {featuredImageUrl && (
         <div className="mb-8">

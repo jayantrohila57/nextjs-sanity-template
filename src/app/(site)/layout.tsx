@@ -76,9 +76,59 @@ export default async function SiteLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const defaultSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const { query } = siteSettingsQuery;
+  const [settings] = await client.fetch<SiteSettings[]>(query);
+
+  // Generate JSON-LD structured data
+  const jsonLd = settings
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: settings.siteName,
+        description: settings.siteDescription,
+        url: settings.siteUrl || defaultSiteUrl,
+        logo: settings.logo ? urlFor(settings.logo).url() : undefined,
+        ...(settings.contactInfo && {
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: settings.contactInfo.email,
+            telephone: settings.contactInfo.phone,
+            address: settings.contactInfo.address,
+          },
+        }),
+        ...(() => {
+          if (!settings.defaultSEO?.structuredData) return {};
+          const result = {};
+          for (const item of settings.defaultSEO.structuredData) {
+            try {
+              const parsedData = JSON.parse(String(item?.data));
+              Object.assign(result, parsedData);
+            } catch {
+              // Skip invalid JSON
+            }
+          }
+          return result;
+        })(),
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Next Sanity CMS Template",
+        description: "CMS-driven websites powered by Next.js and Sanity",
+        url: defaultSiteUrl,
+      };
+
   return (
     <html lang="en">
       <body className={`${font.variable} ${fontMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data, content is safely escaped
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
         <DraftModeProvider />
       </body>
