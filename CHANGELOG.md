@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.5.0
+
+- Complete Phase 5 - SEO & Metadata Layer
+  - Implement comprehensive SEO metadata generation
+  - Add JSON-LD structured data support
+  - Enhance Open Graph and Twitter card metadata
+  - Add dynamic sitemap and robots.txt generation
+  - Improve image handling with Sanity CDN support
+  - Add social media image generation
+  - Implement featured image support with proper sizing
+  - Add page metadata with publish dates and modification tracking
+- Enhanced page rendering with better content handling
+- Improved site layout with structured data integration
+
 ## v0.4.3
 
 - Documentation and infrastructure improvements

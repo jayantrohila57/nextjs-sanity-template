@@ -1,6 +1,6 @@
 # Project Delivery Plan
 
-## Current Status: v0.4.3
+## Current Status: v0.5.0
 
 **Completed Phases:**
 
@@ -9,8 +9,9 @@
 - Phase 2: Next.js foundation (complete)
 - Phase 3: Sanity Core Integration (complete)
 - Phase 4: Content Model Architecture (complete)
+- Phase 5: SEO & Metadata Layer (complete)
 
-**Next Priority:** Begin Phase 5 - SEO & Metadata Layer
+**Next Priority:** Begin Phase 6 - Routing Engine
 
 ---
 
